@@ -23,7 +23,7 @@ ul {
 /******** UTILITÁRIOS ********/
 
 :root {
-  --hue: 159;
+  --hue: 310;
   --dark: hsl(var(--hue), 41%, 10%);
   --primaryColor: hsl(var(--hue), 36%, 57%);
   --secondColor: hsl(var(--hue), 65%, 88%);
@@ -232,15 +232,17 @@ nav ul li a {
 }
 
 nav ul li a:hover,
-nav ul li a:active {
+nav ul li a.active {
   color: var(--primaryColor);
+  font-weight: bold;
 }
 
-nav ul li a:after {
+nav ul li a::after {
   content: '';
   width: 0%;
   height: 2px;
   background-color: var(--primaryColor);
+  font-weight: bold;
 
   position: absolute;
   left: 0;
@@ -250,7 +252,7 @@ nav ul li a:after {
 }
 
 nav ul li a:hover::after,
-nav ul li a:active::after {
+nav ul li a.active::after {
   width: 100%;
 }
 

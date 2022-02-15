@@ -24,13 +24,13 @@ for (const link of links) {
 const header = document.querySelector('#header')
 const navheight = header.offsetHeight
 
-window.addEventListener('scroll', function () {
+function changeHeaderWhenScroll() {
   if (window.scrollY >= navheight) {
     header.classList.add('scroll')
   } else {
     header.classList.remove('scroll')
   }
-})
+}
 
 /* Testimonials slider swiper */
 
@@ -71,3 +71,35 @@ scrollReveal.reveal(
   #contact .text, #contact .links`,
   { interval: 100 }
 )
+
+/* menu ativo */
+
+const sections = document.querySelectorAll('section[id]')
+
+function activateMenu() {
+  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
+
+  for (const section of sections) {
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.offsetHeight
+    const sectionId = section.getAttribute('id')
+
+    const checkpointStart = checkpoint >= sectionTop
+    const checkpointEnd = checkpoint <= sectionTop + sectionHeight
+
+    if (checkpointStart && checkpointEnd) {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.add('.active')
+    } else {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.remove('.active')
+    }
+  }
+}
+
+window.addEventListener('scroll', function () {
+  changeHeaderWhenScroll()
+  activateMenu()
+})

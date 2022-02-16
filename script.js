@@ -72,11 +72,8 @@ scrollReveal.reveal(
   { interval: 100 }
 )
 
-/* menu ativo */
-
-const sections = document.querySelectorAll('section[id]')
-
-function activateMenu() {
+const sections = document.querySelectorAll('main section[id]')
+function activateMenuAtCurrentSection() {
   const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
 
   for (const section of sections) {
@@ -90,16 +87,16 @@ function activateMenu() {
     if (checkpointStart && checkpointEnd) {
       document
         .querySelector('nav ul li a[href*=' + sectionId + ']')
-        .classList.add('.active')
+        .classList.add('active')
     } else {
       document
         .querySelector('nav ul li a[href*=' + sectionId + ']')
-        .classList.remove('.active')
+        .classList.remove('active')
     }
   }
 }
 
 window.addEventListener('scroll', function () {
   changeHeaderWhenScroll()
-  activateMenu()
+  activateMenuAtCurrentSection()
 })

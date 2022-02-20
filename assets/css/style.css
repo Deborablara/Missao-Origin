@@ -23,7 +23,7 @@ ul {
 /******** UTILITÁRIOS ********/
 
 :root {
-  --hue: 310;
+  --hue: 300;
   --dark: hsl(var(--hue), 41%, 10%);
   --primaryColor: hsl(var(--hue), 36%, 57%);
   --secondColor: hsl(var(--hue), 65%, 88%);
